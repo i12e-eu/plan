@@ -11,20 +11,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Roboto+Mono:wght@400&amp;display=swap"
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://design.i12e.eu/assets/css/colours.css"/>
-    <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css"/>
+    <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css?v=document-title-1"/>
     <link rel="stylesheet" href="./styles.css"/>
     <script src="https://design.i12e.eu/assets/js/typography.js" defer></script>
-    <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=padding-free-1" defer></script>
+    <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=header-logo-1" defer></script>
     <script src="./slides.js" defer></script>
 </head>
 <body>
 <header class="page-header">
-    <div class="site-identity">
-        <a class="brand" href="./index.html">i12e.eu <span>/ plan</span></a>
+    <div class="brand">
         <iframe class="site-logo" data-logo-fit
-                src="https://design.i12e.eu/assets/images/logo.svg?variant=6&amp;v=padding-free-1"
+                src="https://design.i12e.eu/assets/images/logo.svg?variant=6&amp;autoplay=1&amp;v=header-logo-1"
                 title="Animated i12e.eu logotype"
-                width="176" height="24" tabindex="-1"></iframe>
+                width="256" height="35" tabindex="-1" aria-hidden="true"></iframe>
+        <a class="brand-link" href="./index.html" aria-label="i12e.eu — Plan Index"></a>
     </div>
     <nav class="page-nav" aria-label="Main navigation">
         <a href="./index.html">Plan Index</a>
@@ -44,11 +44,7 @@
     </div>
     <div id="document-view" tabindex="-1">
         <article class="plan-document" aria-labelledby="document-title">
-            <iframe class="document-logo" data-logo-fit
-                    src="https://design.i12e.eu/assets/images/logo.svg?variant=6&amp;autoplay=1&amp;v=padding-free-1"
-                    title="Looping i12e.eu logotype"
-                    width="352" height="48" loading="lazy" tabindex="-1"></iframe>
-            <h1 id="document-title">Five W One H</h1>
+            <h1 class="document-title" id="document-title">Five W One H</h1>
             <p class="document-description">5W1H: What, Why, Who, Where, When, and How</p>
             <dl class="document-metadata" aria-label="Document information">
                 <div>

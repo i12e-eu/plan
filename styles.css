@@ -7,68 +7,7 @@
     box-sizing: border-box;
 }
 
-html {
-    scrollbar-gutter: stable;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-/* Keep the local design site's header frame while sharing its hosted tokens. */
-.page-header {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    width: calc(100% - 48px);
-    max-width: 1320px;
-    gap: 1.25rem;
-    margin: 24px auto 1.25rem;
-}
-
-.site-identity {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    min-width: 0;
-}
-
-.brand {
-    flex-shrink: 0;
-}
-
-.brand, .brand a {
-    color: var(--color-text-primary);
-    text-decoration: none;
-}
-
-.brand span {
-    color: var(--color-text-secondary);
-}
-
-.brand:hover {
-    text-decoration: underline;
-}
-
-/* The transparent SVG keeps one compact viewBox for its entire animation. */
-.site-logo {
-    display: block;
-    width: 11rem;
-    max-width: 100%;
-    height: 1.5rem;
-    border: 0;
-    background: transparent;
-}
-
-.page-nav {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    min-width: 0;
-}
+/* Shared typography.css owns the header, identity, and navigation on both sites. */
 
 main {
     width: calc(100% - 48px);
@@ -77,7 +16,17 @@ main {
     padding-bottom: 48px;
 }
 
-/* The design index's linked titles, descriptions, and separators. */
+/* The index presents publication details above explicit reading actions. */
+.plan-index {
+    max-width: 1320px;
+}
+
+@media (max-width: 60em) {
+    .plan-index {
+        width: calc(100% - 36px);
+    }
+}
+
 .plans {
     max-width: none;
     list-style: none;
@@ -85,45 +34,130 @@ main {
     padding: 0;
 }
 
-.plan-link {
-    display: block;
-    padding: 20px 0;
-    border-top: 1px solid var(--color-border);
-    color: inherit;
-    text-decoration: none;
-}
-
-.plan-link h2, .plan-link:visited h2 {
+.plans .plan-entry {
     margin: 0;
-    color: var(--color-link);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-border);
 }
 
-.details {
+.plans h2 {
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.plan-description {
+    margin-top: 1.5rem;
+}
+
+.plan-description h3 {
+    margin: 0 0 0.5rem;
+    font: var(--type-ui-panel);
+}
+
+.plan-description p {
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+
+.plans .document-metadata {
+    max-width: none;
+    margin: 1.5rem 0;
+}
+
+.plan-formats {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.plan-format {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
+    flex-direction: column;
+    min-width: 0;
 }
 
-.description {
-    margin: 6px 0 0;
+.plan-format + .plan-format {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.plan-format h3 {
+    margin: 0;
+}
+
+.plan-format-action {
+    margin-top: auto;
+}
+
+.plans .plan-action, .plans .plan-action:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    max-width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-button-border);
+    border-radius: 0.25rem;
+    background: var(--color-button-primary);
+    color: var(--color-button-text);
+    font: var(--type-ui-control);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.plans .plan-action:hover:not(:disabled) {
+    background: var(--color-button-primary-hover);
+}
+
+.plans .plan-action:active:not(:disabled) {
+    background: var(--color-button-primary-active);
+}
+
+.plans .plan-action:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.plans .plan-slides-link {
+    display: none;
+}
+
+.plan-slides-unavailable p {
+    margin: 0.75rem 0 0;
     color: var(--color-text-secondary);
     font: var(--type-ui-meta);
 }
 
-.plan-link:hover h2 {
-    color: var(--color-link-hover);
-    text-decoration-thickness: 2px;
-}
-
-.plan-link:active h2 {
-    color: var(--color-link-active);
-}
-
 .plans > li + li {
-    margin-top: 28px;
+    margin-top: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .plan-formats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+    }
+
+    .plan-format:first-child {
+        padding-right: 2rem;
+    }
+
+    .plan-format + .plan-format {
+        padding-top: 0;
+        padding-left: 2rem;
+        border-top: 0;
+        border-left: 1px solid var(--color-border);
+    }
+
+    .plans .plan-slides-link {
+        display: inline-flex;
+    }
+
+    .plan-slides-unavailable {
+        display: none;
+    }
 }
 
 /* The 5W1H article keeps the shared type scale and theme colours. */
@@ -216,23 +250,6 @@ main {
     background: var(--color-surface);
 }
 
-@media (max-width: 60em) {
-    .page-header {
-        grid-template-columns: minmax(0, 1fr);
-        width: calc(100% - 36px);
-        margin-top: 18px;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 40em) {
-    .page-nav {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.5rem 1rem;
-    }
-}
-
 @media (max-width: 600px) {
     main {
         width: calc(100% - 36px);
@@ -247,39 +264,6 @@ main {
 /* Alternate 5W1H formats share the document's type and colour tokens. */
 [hidden] {
     display: none !important;
-}
-
-.large-screen-only {
-    display: none;
-}
-
-.plan-entry {
-    padding: 20px 0;
-    border-top: 1px solid var(--color-border);
-}
-
-.plan-entry h2 {
-    margin: 0;
-}
-
-.plan-entry a, .plan-entry a:visited {
-    color: var(--color-link);
-}
-
-.plan-entry a:hover {
-    color: var(--color-link-hover);
-    text-decoration-thickness: 2px;
-}
-
-.plan-entry a:active {
-    color: var(--color-link-active);
-}
-
-.format-links {
-    display: flex;
-    gap: 1.25rem;
-    margin-top: 1rem;
-    font: var(--type-ui-meta);
 }
 
 .view-toolbar {
@@ -337,7 +321,7 @@ main {
     background: var(--color-button-primary-active);
 }
 
-.five-w-one-h :focus-visible, .plan-entry a:focus-visible {
+.five-w-one-h :focus-visible, .plans :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 4px;
 }
@@ -454,7 +438,7 @@ main {
     margin-top: 0.5rem;
 }
 
-.cover-logo, .document-logo {
+.cover-logo {
     display: block;
     width: 22rem;
     max-width: 100%;
@@ -464,12 +448,8 @@ main {
     pointer-events: none;
 }
 
-.plan-document > .document-logo {
-    margin-bottom: 1.5rem;
-}
-
 /* The document sets width and spacing; the SVG supplies its stable canvas ratio. */
-iframe[data-logo-fit] {
+.cover-logo[data-logo-fit] {
     height: auto;
     aspect-ratio: var(--logo-aspect-ratio, 22 / 3);
 }
@@ -665,10 +645,6 @@ iframe[data-logo-fit] {
 }
 
 @media (min-width: 1200px) {
-    .large-screen-only {
-        display: inline;
-    }
-
     .five-w-one-h .plan-document h2, .five-w-one-h .plan-document h3 {
         scroll-margin-top: 6rem;
     }

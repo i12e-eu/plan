@@ -12,19 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Roboto+Mono:wght@400&amp;display=swap"
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://design.i12e.eu/assets/css/colours.css"/>
-    <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css"/>
+    <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css?v=document-title-1"/>
     <link rel="stylesheet" href="./styles.css"/>
     <script src="https://design.i12e.eu/assets/js/typography.js" defer></script>
-    <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=transparent-1" defer></script>
+    <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=header-logo-1" defer></script>
+    <script src="./index.js?v=reading-time-1" defer></script>
 </head>
 <body>
 <header class="page-header">
-    <div class="site-identity">
-        <h1 class="brand"><a href="./index.html">i12e.eu <span>/ plan</span></a></h1>
-        <iframe class="site-logo"
-                src="https://design.i12e.eu/assets/images/logo.svg?variant=6&amp;v=transparent-1"
+    <div class="brand">
+        <iframe class="site-logo" data-logo-fit
+                src="https://design.i12e.eu/assets/images/logo.svg?variant=6&amp;autoplay=1&amp;v=header-logo-1"
                 title="Animated i12e.eu logotype"
-                width="176" height="24" tabindex="-1"></iframe>
+                width="256" height="35" tabindex="-1" aria-hidden="true"></iframe>
+        <a class="brand-link" href="./index.html" aria-label="i12e.eu — Plan Index"></a>
     </div>
     <nav class="page-nav" aria-label="Main navigation">
         <a href="./index.html" aria-current="page">Plan Index</a>
@@ -32,33 +33,137 @@
         <a href="./5w1h.html">5W1H</a>
     </nav>
 </header>
-<main>
+<main class="plan-index" aria-labelledby="page-title">
+    <h1 class="document-title" id="page-title">Planning documents</h1>
     <ul class="plans" aria-label="Planning references">
-        <li>
-            <a class="plan-link" href="./master-plan.html" aria-labelledby="master-plan-title master-plan-description">
-                <div class="details">
-                    <div>
-                        <h2 class="type-card-title" id="master-plan-title">Master Plan</h2>
-                        <p class="description" id="master-plan-description">The long-term vision and the steps to
-                            achieve it, with each stage building on the last.</p>
-                    </div>
-                    <span aria-hidden="true">↗</span>
+        <li class="plan-entry">
+            <article aria-labelledby="master-plan-title">
+                <h2 id="master-plan-title">Master Plan</h2>
+                <div class="plan-description">
+                    <h3>Description</h3>
+                    <p id="master-plan-description">The long-term vision and the steps to
+                        achieve it, with each stage building on the last.</p>
                 </div>
-            </a>
+                <dl class="document-metadata" data-publication="master-plan" aria-label="Master Plan information">
+                    <div>
+                        <dt>Author(s)</dt>
+                        <dd data-field="author">Luke Gareth Ribchester</dd>
+                    </div>
+                    <div>
+                        <dt>Affiliation</dt>
+                        <dd data-field="affiliation">i12e.eu</dd>
+                    </div>
+                    <div>
+                        <dt>Publication date</dt>
+                        <dd data-field="published">
+                            <time datetime="2026-09-07">7 September 2026</time>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Last revision date</dt>
+                        <dd data-field="revised">
+                            <time datetime="2026-09-07">7 September 2026</time>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Document status</dt>
+                        <dd class="document-status" data-field="status">Early draft</dd>
+                    </div>
+                    <div>
+                        <dt>Reading time</dt>
+                        <dd data-field="readingTime">~5 min (898 words)</dd>
+                    </div>
+                </dl>
+                <a class="plan-action" href="./master-plan.html" aria-label="Read document: Master Plan">Read
+                    document</a>
+            </article>
         </li>
         <li class="plan-entry">
-            <div class="details">
-                <div>
-                    <h2 class="type-card-title" id="five-w-one-h-title"><a href="./5w1h.html">5W1H</a></h2>
-                    <p class="description" id="five-w-one-h-description">A framework for describing a plan through
+            <article aria-labelledby="five-w-one-h-title">
+                <h2 id="five-w-one-h-title">5W1H</h2>
+                <div class="plan-description">
+                    <h3>Description</h3>
+                    <p id="five-w-one-h-description">A framework for describing a plan through
                         six questions: who, what, where, when, why, and how.</p>
                 </div>
-                <span aria-hidden="true">↗</span>
-            </div>
-            <nav class="format-links" aria-label="5W1H formats">
-                <a href="./5w1h.html">Document</a>
-                <a class="large-screen-only" href="./5w1h.html?view=slides">Slides</a>
-            </nav>
+                <dl class="document-metadata" data-publication="5w1h-common" aria-label="5W1H author information">
+                    <div>
+                        <dt>Author(s)</dt>
+                        <dd data-field="author">Luke Gareth Ribchester</dd>
+                    </div>
+                    <div>
+                        <dt>Affiliation</dt>
+                        <dd data-field="affiliation">i12e.eu</dd>
+                    </div>
+                </dl>
+                <div class="plan-formats">
+                    <section class="plan-format" aria-labelledby="five-w-one-h-document-title">
+                        <h3 id="five-w-one-h-document-title">Document</h3>
+                        <dl class="document-metadata" data-publication="5w1h-document"
+                            aria-label="5W1H document information">
+                            <div>
+                                <dt>Publication date</dt>
+                                <dd data-field="published">
+                                    <time datetime="2026-09-07">7 September 2026</time>
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>Last revision date</dt>
+                                <dd data-field="revised">
+                                    <time datetime="2026-09-07">7 September 2026</time>
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>Document status</dt>
+                                <dd class="document-status" data-field="status">Early draft</dd>
+                            </div>
+                            <div>
+                                <dt>Reading time</dt>
+                                <dd data-field="readingTime">~13 min (2,516 words)</dd>
+                            </div>
+                        </dl>
+                        <div class="plan-format-action">
+                            <a class="plan-action" href="./5w1h.html" aria-label="Read document: 5W1H">Read document</a>
+                        </div>
+                    </section>
+                    <section class="plan-format" aria-labelledby="five-w-one-h-slides-title">
+                        <h3 id="five-w-one-h-slides-title">Slides</h3>
+                        <dl class="document-metadata" data-publication="5w1h-slides"
+                            aria-label="5W1H slides information">
+                            <div>
+                                <dt>Publication date</dt>
+                                <dd data-field="published">
+                                    <time datetime="2026-09-07">7 September 2026</time>
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>Last revision date</dt>
+                                <dd data-field="revised">
+                                    <time datetime="2026-09-07">7 September 2026</time>
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>Document status</dt>
+                                <dd class="document-status" data-field="status">Early draft</dd>
+                            </div>
+                            <div>
+                                <dt>Reading time</dt>
+                                <dd data-field="readingTime">~5 min (836 words)</dd>
+                            </div>
+                        </dl>
+                        <div class="plan-format-action">
+                            <a class="plan-action plan-slides-link" href="./5w1h.html?view=slides"
+                               aria-label="View slides: 5W1H">View slides</a>
+                            <div class="plan-slides-unavailable">
+                                <button class="plan-action" type="button" disabled
+                                        aria-describedby="slides-availability">View slides
+                                </button>
+                                <p id="slides-availability">Slides are available on screens 1200px wide or larger.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
         </li>
     </ul>
 </main>
