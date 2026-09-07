@@ -468,6 +468,12 @@ main {
     margin-bottom: 1.5rem;
 }
 
+/* The document sets width and spacing; the SVG supplies its stable canvas ratio. */
+iframe[data-logo-fit] {
+    height: auto;
+    aspect-ratio: var(--logo-aspect-ratio, 22 / 3);
+}
+
 @media (max-width: 600px) {
     .document-metadata {
         grid-template-columns: minmax(0, 1fr);
