@@ -411,6 +411,69 @@ main {
     font-weight: var(--weight-regular);
 }
 
+/* The cover and document share explicitly authored publication details. */
+.document-description {
+    color: var(--color-text-secondary);
+}
+
+.document-metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 2rem;
+    width: 100%;
+    max-width: 50rem;
+}
+
+.document-metadata > div {
+    min-width: 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+    break-inside: avoid;
+}
+
+.document-metadata dt {
+    margin-bottom: 0.25rem;
+    color: var(--color-text-secondary);
+    font: var(--type-ui-meta);
+}
+
+.document-metadata dd {
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.document-metadata .document-status {
+    font-weight: var(--weight-heading);
+}
+
+.plan-document > .document-metadata {
+    margin: 1.5rem 0 2.5rem;
+}
+
+.pitch-cover .document-metadata {
+    margin-top: 0.5rem;
+}
+
+.cover-logo, .document-logo {
+    display: block;
+    width: 22rem;
+    max-width: 100%;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    pointer-events: none;
+}
+
+.plan-document > .document-logo {
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .document-metadata {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 .slide-kicker span {
     margin-inline: 0.5rem;
     color: var(--color-text-secondary);
