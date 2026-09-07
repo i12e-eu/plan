@@ -1,0 +1,151 @@
+:root {
+    color: var(--color-text-primary);
+    background: var(--color-background);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Keep the local design site's header frame while sharing its hosted tokens. */
+.page-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    width: calc(100% - 48px);
+    max-width: 1320px;
+    gap: 1.25rem;
+    margin: 24px auto 1.25rem;
+}
+
+.site-identity {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.brand {
+    flex-shrink: 0;
+}
+
+.brand, .brand a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--color-text-secondary);
+}
+
+.brand:hover {
+    text-decoration: underline;
+}
+
+/* The transparent SVG keeps one compact viewBox for its entire animation. */
+.site-logo {
+    display: block;
+    width: 11rem;
+    max-width: 100%;
+    height: 1.5rem;
+    border: 0;
+    background: transparent;
+}
+
+.page-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-width: 0;
+}
+
+main {
+    width: calc(100% - 48px);
+    max-width: 960px;
+    margin: 0 auto;
+    padding-bottom: 48px;
+}
+
+/* The design index's linked titles, descriptions, and separators. */
+.plans {
+    max-width: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.plan-link {
+    display: block;
+    padding: 20px 0;
+    border-top: 1px solid var(--color-border);
+    color: inherit;
+    text-decoration: none;
+}
+
+.plan-link h2, .plan-link:visited h2 {
+    margin: 0;
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.details {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.description {
+    margin: 6px 0 0;
+    color: var(--color-text-secondary);
+    font: var(--type-ui-meta);
+}
+
+.plan-link:hover h2 {
+    color: var(--color-link-hover);
+    text-decoration-thickness: 2px;
+}
+
+.plan-link:active h2 {
+    color: var(--color-link-active);
+}
+
+.plans > li + li {
+    margin-top: 28px;
+}
+
+@media (max-width: 60em) {
+    .page-header {
+        grid-template-columns: minmax(0, 1fr);
+        width: calc(100% - 36px);
+        margin-top: 18px;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 40em) {
+    .page-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        width: calc(100% - 36px);
+        padding-bottom: 28px;
+    }
+}
