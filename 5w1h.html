@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./styles.css"/>
     <script src="https://design.i12e.eu/assets/js/typography.js" defer></script>
     <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=transparent-1" defer></script>
+    <script src="./slides.js" defer></script>
 </head>
 <body>
 <header class="page-header">
@@ -31,8 +32,737 @@
         <a href="./5w1h.html" aria-current="page">5W1H</a>
     </nav>
 </header>
-<main>
-    <h1>5W1H</h1>
+<main class="five-w-one-h">
+    <div class="view-toolbar" id="view-toolbar" hidden>
+        <div class="view-switch" role="group" aria-label="5W1H format">
+            <button type="button" data-view="document" aria-pressed="true" aria-controls="document-view">Document
+            </button>
+            <button type="button" data-view="slides" aria-pressed="false" aria-controls="slides-view">Slides</button>
+        </div>
+        <p class="slide-help" id="slide-help" hidden><kbd>←</kbd> <kbd>→</kbd> to navigate <span
+                aria-hidden="true">·</span> <kbd>Space</kbd> to continue</p>
+    </div>
+    <div id="document-view" tabindex="-1">
+        <article class="plan-document" aria-labelledby="document-title">
+            <h1 id="document-title">i12e.eu — Five W One H</h1>
+            <p>i12e.eu is being developed as an independent, nonprofit reference and comparison platform for European
+                digital infrastructure. Its foundation is a public, freely reusable dataset maintained by AI agents,
+                with human oversight of sources, engineering, research, and the project’s direction.</p>
+            <p>The ambition is to become the authoritative place to discover European infrastructure, compare its
+                usefulness, and understand the ownership, operational dependencies, and evidence that inform its
+                sovereignty.</p>
+            <nav class="document-contents" aria-label="Document sections">
+                <ul>
+                    <li><a href="#what">What</a></li>
+                    <li><a href="#why">Why</a></li>
+                    <li><a href="#who">Who</a></li>
+                    <li><a href="#where">Where</a></li>
+                    <li><a href="#when">When</a></li>
+                    <li><a href="#how">How</a></li>
+                    <li><a href="#open-decisions">Open decisions</a></li>
+                </ul>
+            </nav>
+            <section aria-labelledby="what">
+                <h2 id="what">1. What — A public reference for European digital infrastructure</h2>
+                <h3 id="the-core-platform">The core platform</h3>
+                <p>i12e.eu brings together information about company-backed, hosted platforms and open-source projects
+                    across core digital infrastructure categories.</p>
+                <p>Coverage includes:</p>
+                <ul>
+                    <li>Cloud infrastructure and related managed services.</li>
+                    <li>Transactional email, marketing email, and email inbox platforms.</li>
+                    <li>Content management systems.</li>
+                    <li>Payment service providers and tax platforms.</li>
+                    <li>Billing, subscription management, and invoicing platforms.</li>
+                    <li>Social platforms and other categories of core digital infrastructure.</li>
+                </ul>
+                <p>The underlying reference is sector agnostic. It should support people choosing infrastructure for
+                    organizations, production systems, experiments, and personal projects.</p>
+                <h3 id="a-comparison-shaped-by-the-visitor-s-context">A comparison shaped by the visitor’s context</h3>
+                <p>The website begins with a configurable statement, for example:</p>
+                <blockquote>
+                    <p>I am a <strong>compliance officer</strong>, looking for <strong>cloud infrastructure</strong>, in
+                        the <strong>European Union</strong>.</p>
+                </blockquote>
+                <p>Visitors change their role, infrastructure category, and geographic scope. Those choices determine
+                    which information is emphasized and how providers are compared.</p>
+                <p>Below the statement, a comparison table presents the relevant data, potentially supported by one or
+                    two graphs. The experience should make useful differences immediately visible.</p>
+                <p>A compliance officer might see certifications and compliance evidence. A software engineer might
+                    prioritize self-service access and running containerized applications. A cloud engineer might
+                    examine managed services, infrastructure automation, and operational control.</p>
+                <h3 id="public-data-for-people-and-ai-tools">Public data for people and AI tools</h3>
+                <p>The dataset should be publicly available, freely downloadable, and free to reuse in other tools,
+                    services, and products.</p>
+                <p>AI assistants should also be able to consult and reference it when helping people choose
+                    infrastructure. The ambition is for tools such as ChatGPT and Claude to draw on this maintained
+                    reference, reducing the need to repeat the same provider research independently.</p>
+                <p>Public availability and reuse are commitments. Particular download formats, access interfaces, and AI
+                    integrations remain to be defined.</p>
+                <h3 id="applications-built-on-the-data">Applications built on the data</h3>
+                <p>The first sector-specific application concerns Dutch journalism. It will use the infrastructure
+                    dataset to:</p>
+                <ul>
+                    <li>Map news organizations’ technology dependencies.</li>
+                    <li>Identify relevant alternatives.</li>
+                    <li>Compare organizations with their peers.</li>
+                    <li>Provide tailored guidance informed by available infrastructure and sector adoption.</li>
+                </ul>
+                <p>This application may sit on a separate subdomain. The core reference remains useful independently of
+                    it.</p>
+                <p>Over time, the same approach could be repeated in other sectors: establish contact with
+                    organizations, understand their dependencies, and use the shared data to support informed
+                    decisions.</p>
+            </section>
+            <section aria-labelledby="why">
+                <h2 id="why">2. Why — European digital autonomy, capability, and direction</h2>
+                <p><strong>i12e.eu aims to advance European digital autonomy by reducing exposure to external leverage,
+                    sustaining European jobs and innovation, and giving Europe greater control over its technological
+                    future in line with its values.</strong></p>
+                <h3 id="reduce-exposure-to-external-leverage">Reduce exposure to external leverage</h3>
+                <p>The project responds to the strategic risks created by dependence on infrastructure controlled
+                    outside Europe. Making European alternatives visible and comparable should help organizations
+                    understand their options and make informed decisions about those dependencies.</p>
+                <h3 id="sustain-jobs-expertise-and-innovation">Sustain jobs, expertise, and innovation</h3>
+                <p>The motivation includes Europe’s capacity to develop its own technology.</p>
+                <p>Infrastructure choices influence where expertise accumulates, where products are developed, and where
+                    opportunities to innovate emerge. The project aims to support a self-sustaining European
+                    infrastructure ecosystem with the people and capabilities needed to build, maintain, and improve its
+                    digital foundations.</p>
+                <h3 id="shape-technological-direction">Shape technological direction</h3>
+                <p>Europe should have greater capacity to determine how its infrastructure develops and which priorities
+                    its technology serves.</p>
+                <p>The project connects that ambition to practical decisions: discovering suitable platforms, comparing
+                    their strengths and limitations, and understanding the consequences of choosing them.</p>
+            </section>
+            <section aria-labelledby="who">
+                <h2 id="who">3. Who — A collective audience, supported by an independent foundation</h2>
+                <h3 id="the-people-using-the-platform">The people using the platform</h3>
+                <p>The audience is deliberately collective. Executive decisions and developers’ everyday choices should
+                    reinforce one another.</p>
+                <table aria-labelledby="the-people-using-the-platform">
+                    <thead>
+                    <tr>
+                        <th scope="col">Perspective</th>
+                        <th scope="col">What the platform should help them assess</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row"><strong>Technology executives</strong></th>
+                        <td>Organizational fit, capabilities, cost, compliance requirements, sovereignty constraints,
+                            and long-term provider viability.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Software engineers, including hobbyists</strong></th>
+                        <td>Useful features, self-service access, ease of experimentation, and the ability to build and
+                            deploy applications.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Cloud and infrastructure engineers</strong></th>
+                        <td>Infrastructure capabilities, managed services, automation, infrastructure as code, and
+                            operational control.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Compliance officers</strong></th>
+                        <td>Certifications, standards, compliance information, and the evidence supporting relevant
+                            claims.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Government, policymakers, and regulators</strong></th>
+                        <td>The overall state of European infrastructure, its strengths and gaps, and how it changes
+                            over time.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Software engineers and cloud engineers may warrant separate perspectives because their immediate
+                    requirements differ. The final role definitions should be refined through research while keeping the
+                    selection manageable.</p>
+                <h3 id="adoption-from-both-directions">Adoption from both directions</h3>
+                <p>Executives can create organizational demand for suitable European platforms. Developers can become
+                    familiar with those platforms through prototypes, hobby projects, and everyday work, then bring
+                    informed recommendations into their organizations.</p>
+                <p>Both paths matter from the outset.</p>
+                <h3 id="the-people-responsible-for-the-project">The people responsible for the project</h3>
+                <p>The project is currently being developed by one founder. Its intended organizational home is an
+                    independent nonprofit foundation.</p>
+                <p>Human responsibility includes engineering, user experience, source approval, country onboarding,
+                    research, communication, marketing, and securing funding. AI agents perform the repeatable
+                    collection and maintenance work that makes broad coverage possible.</p>
+            </section>
+            <section aria-labelledby="where">
+                <h2 id="where">4. Where — Coverage follows funding, with a path for expansion</h2>
+                <h3 id="the-funding-and-coverage-policy">The funding and coverage policy</h3>
+                <p>Geographic coverage follows the funding available for that work.</p>
+                <table aria-labelledby="the-funding-and-coverage-policy">
+                    <thead>
+                    <tr>
+                        <th scope="col">Geographic scope</th>
+                        <th scope="col">Intended funding route</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row"><strong>The Netherlands</strong></th>
+                        <td>The current Dutch incubator funding supports work in the Dutch context.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>EU member states</strong></th>
+                        <td>Seek EU funding for coverage across the European Union.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>The wider EEA: Iceland, Norway, and Liechtenstein</strong></th>
+                        <td>Include through EU funding where it covers that work; otherwise seek limited funding from
+                            the individual countries for their coverage.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>The United Kingdom</strong></th>
+                        <td>Seek separate UK funding for UK coverage.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Switzerland</strong></th>
+                        <td>Seek separate Swiss funding for Swiss coverage.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Other European countries</strong></th>
+                        <td>Investigate inclusion in response to sufficient demand, suitable funding, and assessed
+                            alignment with the EU.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>The amounts sought from additional countries should be limited contributions appropriate to
+                    supporting their inclusion.</p>
+                <p>These are the project’s intended funding arrangements. Future grants and their specific coverage have
+                    not yet been secured.</p>
+                <h3 id="demand-for-additional-countries">Demand for additional countries</h3>
+                <p>The website should provide an ongoing way for visitors to request countries that are not covered,
+                    potentially through a running poll.</p>
+                <p>Sufficient demand would trigger an investigation. A request or vote would not itself guarantee
+                    inclusion.</p>
+                <p>Monaco remains a possible additional country; its specific funding and inclusion route is not yet
+                    settled.</p>
+                <h3 id="provisional-scope-and-the-underlying-eligibility-principle">Provisional scope and the underlying
+                    eligibility principle</h3>
+                <p>The <strong>provisional scope</strong> of future expansion remains dependent on funding, demand, and
+                    the assessment of additional countries.</p>
+                <p>The <strong>underlying eligibility principle</strong> for EU alignment remains open and subject to
+                    change. Demonstrable alignment through laws and government policy is a possible future basis for
+                    inclusion, but the requirements and assessment method have not been defined.</p>
+                <p>Geographic coverage determines which countries are researched. The sovereignty of an individual
+                    provider is assessed through the more detailed evidence and controls described under How.</p>
+                <p>Published datasets remain freely reusable regardless of where their users are located.</p>
+            </section>
+            <section aria-labelledby="when">
+                <h2 id="when">5. When — Dutch delivery first, followed by broader expansion</h2>
+                <h3 id="development-and-delivery-sequence">Development and delivery sequence</h3>
+                <table aria-labelledby="development-and-delivery-sequence">
+                    <thead>
+                    <tr>
+                        <th scope="col">Timing</th>
+                        <th scope="col">Milestone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row"><strong>1 August 2026</strong></th>
+                        <td>Initial development and exploratory prototyping began, following a longer period of thinking
+                            about the project.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>1 September 2026</strong></th>
+                        <td>A fresh build began from scratch, replacing the prototype implementation.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>By the end of September 2026</strong></th>
+                        <td>Target the first public version of the core platform, containing Dutch cloud infrastructure
+                            data.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>The remaining SVDJ incubator period, through November 2026</strong></th>
+                        <td>Develop the Dutch journalism application, then broaden Dutch coverage to other
+                            infrastructure categories.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>After the incubator</strong></th>
+                        <td>Expand to additional countries using the established framework and automation, supported by
+                            appropriate funding.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Late 2026 or early 2027</strong></th>
+                        <td>Aim to secure EU funding for the next development phase.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><strong>Over roughly one year</strong></th>
+                        <td>Bring the broader system, coverage, user contexts, and operating model together into a
+                            mature platform.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p><strong>The funded incubator work must remain within the Dutch context. International expansion
+                    follows that phase.</strong></p>
+                <p>Broader Dutch coverage is intended to follow the journalism work; its exact category-by-category
+                    completion schedule remains to be established.</p>
+                <p>Automation is expected to accelerate country onboarding and data expansion as the framework matures.
+                    Expansion will still require supervision and refinement, potentially extending beyond an initial
+                    month.</p>
+                <h3 id="what-success-would-look-like-after-the-first-year">What success would look like after the first
+                    year</h3>
+                <p>The ambition is:</p>
+                <ul>
+                    <li>An effectively complete overview of serious infrastructure options across the intended countries
+                        and product categories.
+                    </li>
+                    <li>Recognition as the place to go for an overview and comparison of European infrastructure.</li>
+                    <li>Use of the dataset as a reference by AI assistants supporting infrastructure decisions.</li>
+                    <li>A working Dutch journalism application and the ability to extend that approach to other
+                        sectors.
+                    </li>
+                </ul>
+                <p>The pace of geographic expansion depends on funding. Use by external AI tools is an intended outcome
+                    to pursue.</p>
+            </section>
+            <section aria-labelledby="how">
+                <h2 id="how">6. How — Automated maintenance, contextual comparison, and independent stewardship</h2>
+                <h3 id="establish-sources-and-country-checks">Establish sources and country checks</h3>
+                <p>Humans approve new websites and sources and oversee the onboarding of each country.</p>
+                <p>Country onboarding establishes the relevant company-register checks and other sources needed to
+                    assess entities. Once configured, routine checks of company existence should run automatically.</p>
+                <p>Company-register checks support entity validation. Provider websites and documentation supply
+                    evidence about offerings, features, and dependencies. The system should distinguish what the
+                    available sources establish from information that remains incomplete or unverified.</p>
+                <h3 id="maintain-provider-data-through-agents">Maintain provider data through agents</h3>
+                <p>Agents periodically examine approved provider and project websites, documentation, and relevant
+                    company records.</p>
+                <p>They maintain information about:</p>
+                <ul>
+                    <li>Product offerings and capabilities.</li>
+                    <li>Relevant operational dependencies.</li>
+                    <li>Corporate entities and relationships.</li>
+                    <li>Company existence and available organizational information.</li>
+                    <li>Open-source funding, maintenance activity, and project health.</li>
+                </ul>
+                <p>Companies should be able to request a fresh scan using an email address associated with their
+                    website. An email confirmation triggers the rescan; any resulting data changes still come through
+                    the agent’s source-based collection process.</p>
+                <h3 id="correct-information-at-its-source">Correct information at its source</h3>
+                <p>When information is incomplete or cannot be verified, the platform should make that state visible. It
+                    should be possible to distinguish missing information, unverified information, and verification
+                    attempts that remain unresolved.</p>
+                <p>The follow-up process is to contact the provider, seek clarification, communicate the substantive
+                    clarification publicly, and request that the provider’s own published information be improved.</p>
+                <p><strong>Provider-data corrections should then enter through agent rescans of those published sources.
+                    Manual editing of provider records is not the intended correction mechanism.</strong></p>
+                <p>This makes subsequent scans able to revisit the same evidence and monitor for changes.</p>
+                <p>In the regular view, incomplete or unverified information should produce a notice. The final
+                    preference is to disclose that uncertainty rather than impose an automatic ranking penalty solely
+                    because the information is missing.</p>
+                <p>Uncertainty should affect the strict sovereignty view. Its exact effect on filtering or ranking
+                    remains to be defined.</p>
+                <h3 id="separate-company-location-from-sovereignty-assessment">Separate company location from
+                    sovereignty assessment</h3>
+                <p>For company-backed platforms, headquarters and incorporation location are the initial geographic
+                    anchors for country placement.</p>
+                <p>The dataset should separately document:</p>
+                <ul>
+                    <li>The company’s headquarters and incorporation.</li>
+                    <li>Ownership and control.</li>
+                    <li>Parent-company relationships.</li>
+                    <li>Distinct owning and operating entities.</li>
+                    <li>Relevant infrastructure and service dependencies.</li>
+                </ul>
+                <p>Those relationships should have visible indicators and references so visitors can understand and
+                    filter them.</p>
+                <p>A provider may remain in the general comparison despite having non-European ownership or
+                    dependencies. For example, a provider based in the Netherlands with a US parent company can be
+                    listed with that relationship clearly identified, while being excluded from a strict European
+                    sovereignty view.</p>
+                <p>Where headquarters and incorporation differ, the precedence rule for country placement remains
+                    open.</p>
+                <h3 id="provide-configurable-sovereignty-views">Provide configurable sovereignty views</h3>
+                <p>The default comparison emphasizes usefulness, innovation, and suitability within a product category,
+                    alongside the evidence relevant to the visitor’s role.</p>
+                <p>A separate strict sovereignty mode applies tighter requirements to ownership, control, and
+                    dependencies. Its geographic boundary should be configurable: EU-only requirements can be
+                    distinguished from broader selections involving the EEA, Switzerland, or the United Kingdom.</p>
+                <p>Known relationships outside the selected boundary can exclude a provider from that strict view.</p>
+                <p>Portability and the ability to move away from particular dependencies may also inform an assessment
+                    where evidence is available. Their treatment should reflect the actual platform.</p>
+                <h3 id="assess-open-source-projects-on-their-own-terms">Assess open-source projects on their own
+                    terms</h3>
+                <p>Open-source projects need a distinct assessment because their deployment location can vary and they
+                    may not correspond to a conventional hosted provider or incorporated company.</p>
+                <p>Relevant information includes:</p>
+                <ul>
+                    <li>Where project funding comes from.</li>
+                    <li>How actively the project is maintained.</li>
+                    <li>Its health and track record.</li>
+                    <li>Its apparent outlook and continuity.</li>
+                </ul>
+                <p>Company-specific assumptions should not automatically be applied to open-source projects. Their
+                    geographic attribution and detailed assessment criteria remain to be developed.</p>
+                <h3 id="rank-for-usefulness-supported-by-public-evidence">Rank for usefulness, supported by public
+                    evidence</h3>
+                <p>A high ranking should indicate that a provider meets the needs of people using products in that
+                    category relatively well, taking the selected role into account.</p>
+                <p>Potential inputs include:</p>
+                <ul>
+                    <li>Features and practical capabilities.</li>
+                    <li>Compliance information.</li>
+                    <li>Track record, reputation, and years in operation.</li>
+                    <li>Staffing and organizational capacity.</li>
+                    <li>Funding and publicly available financial information.</li>
+                    <li>Evidence about customers, where available.</li>
+                    <li>Ownership and operational dependencies where relevant to the selected context.</li>
+                </ul>
+                <p>These are candidate signals to assess together. Their weights, measurement methods, and thresholds
+                    have not been settled.</p>
+                <p><strong>Everything that feeds a ranking should be public</strong>, including the relevant evidence
+                    and the method used to combine it.</p>
+                <p>Surveys and research with people across roles, industries, and categories should determine which
+                    comparisons are immediately useful.</p>
+                <p>The rankings should encourage providers to compete and improve by making capabilities and
+                    shortcomings visible. The presentation remains practical and informative; competitive pressure
+                    follows from the comparison.</p>
+                <h3 id="fund-development-and-continuing-operation">Fund development and continuing operation</h3>
+                <p>The preferred development model is public funding sufficient to support approximately one year of the
+                    founder’s salary, together with compute and AI model usage costs.</p>
+                <p>After the initial build, continuing operation may be supported through EU or national funding and
+                    sponsorship. Advertising or commercial sponsorship could supplement recurring costs, particularly
+                    the costs of agents maintaining coverage in individual countries.</p>
+                <p>Advertising is not the preferred foundation for initial development because it would not reliably
+                    enable immediate full-time work and introduces concerns about influence.</p>
+                <p>The project will continue to require compute and model usage funding even if some work is eventually
+                    supported by volunteers. A fully open-source or volunteer-led software model has not been
+                    selected.</p>
+                <h3 id="protect-independence-through-transparency">Protect independence through transparency</h3>
+                <p>If advertising or sponsorship is accepted, the proposed safeguards are:</p>
+                <ul>
+                    <li>Public disclosure of contracts, their dates, and amounts.</li>
+                    <li>Public financial accounts.</li>
+                    <li>Potential publication of invoices.</li>
+                    <li>Predefined advertising locations.</li>
+                    <li>Contractual restrictions on influence over rankings and on advertising placement negotiations
+                        beyond the defined arrangements.
+                    </li>
+                </ul>
+                <p>Financial support should not determine comparison results.</p>
+                <p>Factual clarification should continue through the public-source correction process. This keeps
+                    necessary communication about accuracy distinct from attempts to influence a ranking.</p>
+                <p>The foundation’s detailed governance, contractual terms, and long-term funding mix remain to be
+                    developed.</p>
+            </section>
+            <section aria-labelledby="open-decisions">
+                <h2 id="open-decisions">Decisions deliberately left open</h2>
+                <p>The document preserves the following matters as open:</p>
+                <ul>
+                    <li>The EU-alignment criteria for additional countries and the level of demand that should trigger
+                        investigation.
+                    </li>
+                    <li>Ranking methods, role-specific weights, and ways to assess reputation and organizational
+                        health.
+                    </li>
+                    <li>The treatment of incomplete evidence in strict sovereignty mode and the depth of dependency
+                        verification.
+                    </li>
+                    <li>Country attribution where headquarters and incorporation differ, and geographic treatment of
+                        open-source projects.
+                    </li>
+                    <li>Specific funding programmes, contribution amounts, foundation governance, and
+                        invoice-publication policy.
+                    </li>
+                    <li>The formal data licence, export formats, and interfaces for reuse by other services and AI
+                        tools.
+                    </li>
+                </ul>
+                <p>These open matters do not prevent the project definition from being published. They should remain
+                    visibly open until decisions are made.</p>
+            </section>
+        </article>
+    </div>
+    <section class="pitch-deck" id="slides-view" aria-label="5W1H slides" hidden>
+        <div class="slide-viewport" id="slide-viewport">
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="1 of 12"
+                     tabindex="-1">
+                <p class="slide-kicker">5W1H <span>/</span> Proposition &amp; Why</p>
+                <h1>A public reference for European digital infrastructure</h1>
+                <p class="slide-lead">An independent, nonprofit comparison platform in development, built on a freely
+                    reusable dataset maintained by AI agents with human oversight.</p>
+                <div class="slide-columns slide-columns-three">
+                    <div><h2>Autonomy</h2>
+                        <p>Reduce exposure to external leverage by making European alternatives visible and
+                            comparable.</p></div>
+                    <div><h2>Capability</h2>
+                        <p>Sustain European jobs, expertise, and innovation.</p></div>
+                    <div><h2>Direction</h2>
+                        <p>Give Europe greater control over its technological future in line with its values.</p></div>
+                </div>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="2 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">What <span>/</span> Contextual comparison</p>
+                <h1>Find infrastructure that fits your context</h1>
+                <blockquote class="slide-statement"><p>I am a <strong>compliance officer</strong>, looking for <strong>cloud
+                    infrastructure</strong>, in the <strong>European Union</strong>.</p></blockquote>
+                <p>Role, category, and geography shape the comparison of hosted platforms and open-source projects.</p>
+                <ul class="slide-list slide-list-columns">
+                    <li>Cloud and managed services</li>
+                    <li>Transactional, marketing, and inbox email</li>
+                    <li>Content management</li>
+                    <li>Payments and tax</li>
+                    <li>Billing, subscriptions, and invoicing</li>
+                    <li>Social and other core infrastructure</li>
+                </ul>
+                <p class="slide-note">Sector agnostic: useful for organizations, production systems, experiments, and
+                    personal projects.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="3 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">What <span>/</span> Shared data, multiple applications</p>
+                <h1>One maintained reference, many uses</h1>
+                <div class="slide-columns">
+                    <div><h2>A public foundation</h2>
+                        <p>Freely downloadable and reusable data, wherever its users are located. A reference for people
+                            and, in time, AI assistants.</p>
+                        <p>Licence, formats, interfaces, and AI integrations remain to be defined.</p></div>
+                    <div><h2>Dutch journalism first</h2>
+                        <p>Map technology dependencies, identify alternatives, compare peers, and provide tailored
+                            guidance.</p>
+                        <p>The core dataset remains useful independently; the same approach could later serve other
+                            sectors.</p></div>
+                </div>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="4 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">Who <span>/</span> A collective audience</p>
+                <h1>Adoption from both directions</h1>
+                <p class="slide-lead">Executive demand and developers’ everyday choices should reinforce one
+                    another.</p>
+                <dl class="slide-facts">
+                    <div>
+                        <dt>Technology executives</dt>
+                        <dd>Organizational fit, cost, capabilities, and provider viability.</dd>
+                    </div>
+                    <div>
+                        <dt>Software engineers &amp; hobbyists</dt>
+                        <dd>Useful features, self-service access, and experimentation.</dd>
+                    </div>
+                    <div>
+                        <dt>Cloud &amp; infrastructure engineers</dt>
+                        <dd>Managed services, automation, and operational control.</dd>
+                    </div>
+                    <div>
+                        <dt>Compliance officers</dt>
+                        <dd>Certifications, standards, and supporting evidence.</dd>
+                    </div>
+                    <div>
+                        <dt>Government &amp; policymakers</dt>
+                        <dd>European infrastructure’s strengths, gaps, and progress.</dd>
+                    </div>
+                </dl>
+                <p class="slide-note">Research will refine the roles, including the distinction between software and
+                    infrastructure engineers.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="5 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">Where <span>/</span> Geographic scope</p>
+                <h1>Coverage follows funding</h1>
+                <dl class="slide-facts">
+                    <div>
+                        <dt>The Netherlands</dt>
+                        <dd>Current Dutch incubator funding.</dd>
+                    </div>
+                    <div>
+                        <dt>EU member states</dt>
+                        <dd>Seek EU funding.</dd>
+                    </div>
+                    <div>
+                        <dt>Iceland, Norway &amp; Liechtenstein</dt>
+                        <dd>EU funding where eligible; otherwise limited national contributions.</dd>
+                    </div>
+                    <div>
+                        <dt>United Kingdom</dt>
+                        <dd>Seek separate UK funding.</dd>
+                    </div>
+                    <div>
+                        <dt>Switzerland</dt>
+                        <dd>Seek separate Swiss funding.</dd>
+                    </div>
+                    <div>
+                        <dt>Other European countries</dt>
+                        <dd>Investigate demand, funding, and alignment with the EU.</dd>
+                    </div>
+                </dl>
+                <p class="slide-note">Future grants are unsecured. Sufficient demand triggers investigation; requests do
+                    not guarantee inclusion. Alignment criteria and Monaco’s route remain open.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="6 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">When <span>/</span> Delivery sequence</p>
+                <h1>Dutch delivery first, then expansion</h1>
+                <ol class="slide-timeline">
+                    <li><p class="timeline-date">August–September 2026</p>
+                        <h2>Establish the core</h2>
+                        <p>Prototyping began 1 August; a fresh build began 1 September.</p>
+                        <p><strong>Target:</strong> Dutch cloud infrastructure in a first public version by the end of
+                            September.</p></li>
+                    <li><p class="timeline-date">Incubator through November</p>
+                        <h2>Apply and broaden</h2>
+                        <p>Dutch journalism first, then broader Dutch categories. Category completion dates remain
+                            open.</p></li>
+                    <li><p class="timeline-date">After the incubator</p>
+                        <h2>Expand with funding</h2>
+                        <p>International coverage follows the Dutch phase.</p>
+                        <p><strong>Aim:</strong> EU funding in late 2026 or early 2027; a mature platform over roughly
+                            one year.</p></li>
+                </ol>
+                <p class="slide-note">The ambition: broad coverage, a recognized reference for people and AI tools, and
+                    a working journalism application. Expansion depends on funding.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="7 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">How <span>/</span> Collection &amp; maintenance</p>
+                <h1>Agents maintain the reference; people oversee it</h1>
+                <ol class="slide-steps">
+                    <li><h2>Approve sources</h2>
+                        <p>People onboard countries, approve sources, and establish company-register checks.</p></li>
+                    <li><h2>Collect evidence</h2>
+                        <p>Agents check entities and collect offerings, capabilities, relationships, and
+                            dependencies.</p></li>
+                    <li><h2>Keep it current</h2>
+                        <p>Periodic scans revisit evidence. Providers can request a rescan through an email confirmation
+                            associated with their website.</p></li>
+                </ol>
+                <p class="slide-note">One founder today. Human responsibility spans engineering, research,
+                    communication, source oversight, and funding.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="8 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">How <span>/</span> Corrections &amp; uncertainty</p>
+                <h1>Corrections return to the published evidence</h1>
+                <ol class="slide-steps slide-steps-four">
+                    <li><h2>Show uncertainty</h2>
+                        <p>Distinguish missing, unverified, and unresolved information.</p></li>
+                    <li><h2>Seek clarification</h2>
+                        <p>Contact the provider and communicate substantive clarification publicly.</p></li>
+                    <li><h2>Improve the source</h2>
+                        <p>Ask the provider to update its published information.</p></li>
+                    <li><h2>Rescan</h2>
+                        <p>Agents update the dataset from those sources.</p></li>
+                </ol>
+                <p class="slide-note">Corrections enter through rescans, not manual record edits. Regular comparisons
+                    show a notice without an automatic penalty for missing evidence; its effect in strict mode remains
+                    open.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="9 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">How <span>/</span> Sovereignty</p>
+                <h1>Location and sovereignty are separate questions</h1>
+                <p>Record headquarters, incorporation, ownership, control, owning and operating entities, parents, and
+                    dependencies separately.</p>
+                <div class="slide-columns">
+                    <div><h2>General comparison</h2>
+                        <p>Emphasize contextual usefulness and innovation. A Dutch provider with a US parent can remain
+                            listed with that relationship disclosed.</p></div>
+                    <div><h2>Strict sovereignty</h2>
+                        <p>Apply tighter requirements within a configurable boundary: EU-only or broader selections
+                            including the EEA, Switzerland, or UK. Relationships outside it can exclude providers.</p>
+                    </div>
+                </div>
+                <p class="slide-note">Uncertainty must affect strict mode; its exact treatment remains undecided.
+                    Portability may inform assessment where evidenced.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="10 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">How <span>/</span> Assessment</p>
+                <h1>Compare usefulness with public evidence</h1>
+                <div class="slide-columns">
+                    <div><h2>Contextual rankings</h2>
+                        <p>Candidate signals include features, compliance, track record, organizational capacity,
+                            funding, customers, ownership, and dependencies.</p>
+                        <p>Evidence and the method of combining it should be public. Research informs usefulness;
+                            weights and thresholds remain open.</p></div>
+                    <div><h2>Open-source projects</h2>
+                        <p>Assess funding, maintenance, health, and continuity separately from company-backed
+                            platforms.</p>
+                        <p>Deployment can vary. Geographic attribution and detailed assessment criteria remain to be
+                            developed.</p></div>
+                </div>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="11 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">How <span>/</span> Funding &amp; independence</p>
+                <h1>An independent operating model</h1>
+                <div class="slide-columns">
+                    <div><h2>Support the work</h2>
+                        <p>An independent nonprofit foundation is intended. Preferred initial public funding covers
+                            approximately one founder-year plus compute and models.</p>
+                        <p>Ongoing public funding and sponsorship could sustain operation.</p></div>
+                    <div><h2>Protect independence</h2>
+                        <p>Proposed safeguards: public contracts and accounts, predefined advertising locations, and
+                            contractual limits on influence. Invoice publication remains undecided.</p>
+                        <p><strong>Financial support must not determine comparison results.</strong></p></div>
+                </div>
+                <p class="slide-note">Governance and the long-term funding mix remain open.</p>
+            </section>
+            <section class="pitch-slide" data-slide role="group" aria-roledescription="slide" aria-label="12 of 12"
+                     tabindex="-1" hidden>
+                <p class="slide-kicker">Open decisions <span>/</span> Next questions</p>
+                <h1>What remains to be decided</h1>
+                <dl class="slide-decisions">
+                    <div>
+                        <dt>Country eligibility</dt>
+                        <dd>EU-alignment criteria and demand thresholds.</dd>
+                    </div>
+                    <div>
+                        <dt>Ranking methods</dt>
+                        <dd>Role weights, reputation, and organizational health.</dd>
+                    </div>
+                    <div>
+                        <dt>Strict sovereignty</dt>
+                        <dd>Incomplete evidence and dependency-verification depth.</dd>
+                    </div>
+                    <div>
+                        <dt>Geographic attribution</dt>
+                        <dd>Headquarters versus incorporation; open-source projects.</dd>
+                    </div>
+                    <div>
+                        <dt>Funding &amp; governance</dt>
+                        <dd>Programmes, amounts, foundation governance, and invoice policy.</dd>
+                    </div>
+                    <div>
+                        <dt>Data reuse</dt>
+                        <dd>Formal licence, export formats, and interfaces.</dd>
+                    </div>
+                </dl>
+                <p class="slide-note">These questions remain visibly open as the project develops.</p>
+            </section>
+        </div>
+        <nav class="slide-navigation" aria-label="Slide navigation">
+            <button type="button" id="previous-slide" aria-label="Previous slide" aria-controls="slide-viewport"
+                    disabled><span aria-hidden="true">←</span> Previous
+            </button>
+            <div class="slide-position">
+                <p class="slide-counter" id="slide-counter">1 / 12</p>
+                <p class="slide-current-title" id="slide-current-title">A public reference for European digital
+                    infrastructure</p>
+            </div>
+            <button type="button" id="next-slide" aria-label="Next slide" aria-controls="slide-viewport">Next <span
+                    aria-hidden="true">→</span></button>
+        </nav>
+        <p class="visually-hidden" id="slide-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
 </main>
 </body>
 </html>
