@@ -682,6 +682,10 @@ main {
 }
 
 @media print {
+    .page-header .theme-control {
+        display: none !important;
+    }
+
     .view-toolbar, .pitch-deck {
         display: none !important;
     }

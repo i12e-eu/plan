@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="color-scheme" content="light dark"/>
-    <script src="https://design.i12e.eu/assets/js/appearance.js"></script>
+    <script src="https://design.i12e.eu/assets/js/appearance.js?v=plan-appearance-1"
+            data-appearance-storage-key="i12e.plan.appearance"></script>
     <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=logo-canvas-2"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description"
@@ -16,7 +17,7 @@
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://design.i12e.eu/assets/css/colours.css"/>
     <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css?v=css-type-1-logo-canvas-2"/>
-    <link rel="stylesheet" href="./styles.css?v=header-spacing-1"/>
+    <link rel="stylesheet" href="./styles.css?v=plan-appearance-1"/>
     <script src="./reading-time.js" defer></script>
     <script src="./slides.js" defer></script>
 </head>
@@ -27,15 +28,32 @@
                 src="https://design.i12e.eu/assets/images/logo.svg?variant=6&amp;autoplay=1&amp;v=logo-canvas-2"
                 title="Animated i12e.eu logotype"
                 width="256" height="35" tabindex="-1" aria-hidden="true"></iframe>
-        <a class="brand-link" href="./index.html" aria-label="i12e.eu — Plan Index"></a>
+        <a class="brand-link" href="./index.html" aria-label="i12e.eu — Documents Index"></a>
     </div>
-    <nav class="page-nav" aria-label="Main navigation">
-        <a href="./index.html">Plan Index</a>
-        <a href="./master-plan.html">Master Plan</a>
-        <a href="./5w1h.html">5W1H</a>
-        <a href="./dutch-journalism.html" aria-current="page">Dutch Journalism</a>
-    </nav>
+    <div class="page-tools">
+        <nav class="page-nav" aria-label="Main navigation">
+            <a href="./index.html">Documents Index</a>
+            <a href="./master-plan.html">Master Plan</a>
+            <a href="./5w1h.html">5W1H</a>
+            <a href="./dutch-journalism.html" aria-current="page">Dutch Journalism</a>
+        </nav>
+        <div class="theme-control" hidden>
+            <label for="page-appearance">Appearance</label>
+            <select id="page-appearance" autocomplete="off">
+                <option value="light" selected>Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+    </div>
 </header>
+<script>
+  (() => {
+    const appearance = document.getElementById("page-appearance");
+    if (!appearance || typeof window.i12eAppearance?.bind !== "function") return;
+    window.i12eAppearance.bind(appearance);
+    appearance.closest(".theme-control").hidden = false;
+  })();
+</script>
 <main class="dutch-journalism" data-slides-only>
     <div class="view-toolbar" id="view-toolbar" hidden>
         <p class="slide-help" id="slide-help" hidden><kbd>←</kbd> <kbd>→</kbd> to navigate <span
