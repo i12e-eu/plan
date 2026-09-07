@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+    if (!window.PlanReadingTime) return;
+    const {countWords, formatReadingTime} = window.PlanReadingTime;
+
   const metadataFields = new Map([
     ["Author", "author"],
     ["Affiliation", "affiliation"],
@@ -8,19 +11,6 @@
     ["Last revised", "revised"],
     ["Status", "status"],
   ]);
-  const wordNumbers = new Intl.NumberFormat("en-GB");
-  const wordsPerMinute = 200; // Estimate 30 seconds per 100 words.
-  const blockTags = new Set([
-    "ARTICLE", "BLOCKQUOTE", "BR", "CAPTION", "DD", "DIV", "DL", "DT",
-    "FIGCAPTION", "FIGURE", "H1", "H2", "H3", "H4", "H5", "H6", "HR",
-    "LI", "OL", "P", "PRE", "SECTION", "TABLE", "TBODY", "TD", "TFOOT",
-    "TH", "THEAD", "TR", "UL",
-  ]);
-  const excludedContent = [
-    "#document-title", ".document-title", ".document-description",
-    ".document-metadata", ".pitch-cover", ".slide-kicker",
-    "nav", "script", "style", "template", "iframe", "svg",
-  ].join(", ");
 
   function readMetadata(root) {
     const values = {};
@@ -36,27 +26,6 @@
       if (time) values[field].date = time.getAttribute("datetime");
     }
     return values;
-  }
-
-  function contentText(node) {
-    if (node.nodeType === 3) return node.textContent;
-    if (node.nodeType !== 1 || node.matches(excludedContent)) return "";
-
-    // Preserve inline words while separating adjacent paragraphs and table cells.
-    let text = Array.from(node.childNodes, contentText).join("");
-    if (/^H[1-6]$/.test(node.tagName)) text = text.replace(/^\s*\d+[.)]\s+/, "");
-    return blockTags.has(node.tagName) ? ` ${text} ` : text;
-  }
-
-  function countWords(roots) {
-    const text = Array.from(roots, contentText).join(" ");
-    return text.split(/\s+/u).filter(word => /[\p{L}\p{N}]/u.test(word)).length;
-  }
-
-  function formatReadingTime(wordCount) {
-    const minutes = Math.ceil(wordCount / wordsPerMinute);
-    const wordLabel = wordCount === 1 ? "word" : "words";
-    return `~${minutes} min (${wordNumbers.format(wordCount)} ${wordLabel})`;
   }
 
   function updatePublication(name, values) {
