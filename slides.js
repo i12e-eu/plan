@@ -1,7 +1,9 @@
-/* Progressive enhancement: the complete document is the no-script default. */
+/* Document pages progressively enhance; slides-only pages explicitly opt in. */
 (() => {
   const root = document.documentElement;
+    const slidesOnly = Boolean(document.querySelector("main[data-slides-only]"));
   const documentView = document.getElementById("document-view");
+    const unavailable = document.getElementById("slides-unavailable");
   const deck = document.getElementById("slides-view");
   const toolbar = document.getElementById("view-toolbar");
   const viewport = document.getElementById("slide-viewport");
@@ -13,16 +15,18 @@
   const currentTitle = document.getElementById("slide-current-title");
   const announcement = document.getElementById("slide-announcement");
   const help = document.getElementById("slide-help");
-  if (!documentView || !deck || !toolbar || !viewport || !slides.length) return;
+    if ((!documentView && !slidesOnly) || (slidesOnly && !unavailable) ||
+      !deck || !toolbar || !viewport || !slides.length) return;
 
   const largeScreen = window.matchMedia("(min-width: 1200px)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let view = "document";
+    let view = slidesOnly ? "unavailable" : "document";
   let currentSlide = 0;
   let documentScroll = window.scrollY;
   let transition;
 
   function updateURL() {
+      if (slidesOnly) return;
     const url = new URL(window.location.href);
     if (view === "slides") url.searchParams.set("view", "slides");
     else url.searchParams.delete("view");
@@ -41,6 +45,10 @@
   }
 
   function setView(requestedView, {focus = true} = {}) {
+      if (slidesOnly) {
+          setSlidesOnlyView({focus});
+          return;
+      }
     const nextView = requestedView === "slides" && largeScreen.matches ? "slides" : "document";
     const focusedElement = document.activeElement;
     toolbar.hidden = !largeScreen.matches;
@@ -77,6 +85,38 @@
       if (focus) slides[currentSlide].focus({preventScroll: true});
     }
   }
+
+    function setSlidesOnlyView({focus}) {
+        const available = largeScreen.matches;
+        const nextView = available ? "slides" : "unavailable";
+        const focusedElement = document.activeElement;
+        const focusWasInPresentation = deck.contains(focusedElement) || toolbar.contains(focusedElement);
+        const focusWasInNotice = unavailable.contains(focusedElement);
+        const changed = nextView !== view;
+
+        if (changed) {
+            transition?.cancel();
+            if (available) documentScroll = window.scrollY;
+        }
+        view = nextView;
+        root.dataset.planView = view;
+        unavailable.hidden = available;
+        toolbar.hidden = !available;
+        deck.hidden = !available;
+        help.hidden = !available;
+
+        if (available) {
+            updatePosition();
+            if (changed) {
+                window.scrollTo({top: 0, behavior: "instant"});
+                viewport.scrollTop = 0;
+            }
+            if (focus && focusWasInNotice) slides[currentSlide].focus({preventScroll: true});
+        } else {
+            if (focus && focusWasInPresentation) unavailable.focus({preventScroll: true});
+            if (changed) window.scrollTo({top: documentScroll, behavior: "instant"});
+        }
+    }
 
   function moveSlide(direction) {
     if (view !== "slides") return;
@@ -127,29 +167,32 @@
   });
 
   largeScreen.addEventListener("change", () => {
-    if (!largeScreen.matches) setView("document");
+      if (slidesOnly) setView("slides");
+      else if (!largeScreen.matches) setView("document");
     else toolbar.hidden = false;
   });
   reducedMotion.addEventListener("change", () => {
     if (reducedMotion.matches) transition?.cancel();
   });
-  window.addEventListener("popstate", () => {
-    setView(new URL(window.location.href).searchParams.get("view"), {focus: false});
-  });
-  window.addEventListener("hashchange", () => {
-    let id;
-    try {
-      id = decodeURIComponent(window.location.hash.slice(1));
-    } catch {
-      return;
+    if (!slidesOnly) {
+        window.addEventListener("popstate", () => {
+            setView(new URL(window.location.href).searchParams.get("view"), {focus: false});
+        });
+        window.addEventListener("hashchange", () => {
+            let id;
+            try {
+                id = decodeURIComponent(window.location.hash.slice(1));
+            } catch {
+                return;
+            }
+            const target = document.getElementById(id);
+            if (view === "slides" && target && documentView.contains(target)) {
+                setView("document", {focus: false});
+                target.scrollIntoView();
+            }
+        });
     }
-    const target = document.getElementById(id);
-    if (view === "slides" && target && documentView.contains(target)) {
-      setView("document", {focus: false});
-      target.scrollIntoView();
-    }
-  });
 
-  root.dataset.planView = "document";
-  setView(new URL(window.location.href).searchParams.get("view"), {focus: false});
+    root.dataset.planView = view;
+    setView(slidesOnly ? "slides" : new URL(window.location.href).searchParams.get("view"), {focus: false});
 })();

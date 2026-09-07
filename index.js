@@ -119,4 +119,15 @@
       });
     }
   });
+
+    void refreshPage("./dutch-journalism.html", source => {
+        const cover = source.querySelector("#slides-view .pitch-cover");
+        const slides = source.querySelectorAll("#slides-view [data-slide]:not(.pitch-cover)");
+        if (cover) updatePublication("dutch-journalism", readMetadata(cover));
+        if (slides.length) {
+            updatePublication("dutch-journalism", {
+                readingTime: {text: formatReadingTime(countWords(slides))},
+            });
+        }
+    });
 })();

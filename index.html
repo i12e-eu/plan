@@ -4,7 +4,8 @@
     <meta charset="utf-8"/>
     <script src="https://design.i12e.eu/assets/js/appearance.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="The i12e.eu plan index. Explore the Master Plan and the 5W1H framework."/>
+    <meta name="description"
+          content="The i12e.eu plan index. Explore the Master Plan, the 5W1H framework, and Dutch Journalism."/>
     <title>i12e.eu / plan</title>
     <link rel="preconnect" href="https://design.i12e.eu"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -12,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Roboto+Mono:wght@400&amp;display=swap"
           rel="stylesheet"/>
     <link rel="stylesheet" href="https://design.i12e.eu/assets/css/colours.css"/>
-    <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css?v=document-title-1"/>
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="https://design.i12e.eu/assets/css/typography.css?v=header-spacing-1"/>
+    <link rel="stylesheet" href="./styles.css?v=header-spacing-1"/>
     <script src="https://design.i12e.eu/assets/js/typography.js" defer></script>
     <script src="https://design.i12e.eu/assets/js/logo-appearance.js?v=header-logo-1" defer></script>
     <script src="./index.js?v=reading-time-1" defer></script>
@@ -31,6 +32,7 @@
         <a href="./index.html" aria-current="page">Plan Index</a>
         <a href="./master-plan.html">Master Plan</a>
         <a href="./5w1h.html">5W1H</a>
+        <a href="./dutch-journalism.html">Dutch Journalism</a>
     </nav>
 </header>
 <main class="plan-index" aria-labelledby="page-title">
@@ -162,6 +164,58 @@
                             </div>
                         </div>
                     </section>
+                </div>
+            </article>
+        </li>
+        <li class="plan-entry">
+            <article aria-labelledby="dutch-journalism-title">
+                <h2 id="dutch-journalism-title">Dutch Journalism</h2>
+                <div class="plan-description">
+                    <h3>Description</h3>
+                    <p id="dutch-journalism-description">The Dutch journalism stage, the shared platform it builds on,
+                        and what connecting the two enables.</p>
+                </div>
+                <dl class="document-metadata" data-publication="dutch-journalism"
+                    aria-label="Dutch Journalism slides information">
+                    <div>
+                        <dt>Author(s)</dt>
+                        <dd data-field="author">Luke Gareth Ribchester</dd>
+                    </div>
+                    <div>
+                        <dt>Affiliation</dt>
+                        <dd data-field="affiliation">i12e.eu</dd>
+                    </div>
+                    <div>
+                        <dt>Publication date</dt>
+                        <dd data-field="published">
+                            <time datetime="2026-09-07">7 September 2026</time>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Last revision date</dt>
+                        <dd data-field="revised">
+                            <time datetime="2026-09-07">7 September 2026</time>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Document status</dt>
+                        <dd class="document-status" data-field="status">Early draft</dd>
+                    </div>
+                    <div>
+                        <dt>Reading time</dt>
+                        <dd data-field="readingTime">~3 min (449 words)</dd>
+                    </div>
+                </dl>
+                <div class="plan-format-action">
+                    <a class="plan-action plan-slides-link" href="./dutch-journalism.html"
+                       aria-label="View slides: Dutch Journalism">View slides</a>
+                    <div class="plan-slides-unavailable">
+                        <button class="plan-action" type="button" disabled
+                                aria-describedby="dutch-journalism-slides-availability">View slides
+                        </button>
+                        <p id="dutch-journalism-slides-availability">Slides are available on screens 1200px wide or
+                            larger.</p>
+                    </div>
                 </div>
             </article>
         </li>

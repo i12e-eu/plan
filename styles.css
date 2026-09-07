@@ -161,10 +161,6 @@ main {
 }
 
 /* The 5W1H article keeps the shared type scale and theme colours. */
-.plan-document {
-    padding-top: 1.5rem;
-}
-
 .plan-document .document-contents {
     margin: 2rem 0 0;
     padding: 1rem 0;
@@ -321,7 +317,7 @@ main {
     background: var(--color-button-primary-active);
 }
 
-.five-w-one-h :focus-visible, .plans :focus-visible {
+.five-w-one-h :focus-visible, [data-slides-only] :focus-visible, .plans :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 4px;
 }
@@ -644,6 +640,13 @@ main {
     border: 0;
 }
 
+/* Keep toolbar-to-document spacing only while the desktop toolbar is visible. */
+@media screen and (min-width: 1200px) {
+    .view-toolbar:not([hidden]) + #document-view {
+        padding-top: 1.5rem;
+    }
+}
+
 @media (min-width: 1200px) {
     .five-w-one-h .plan-document h2, .five-w-one-h .plan-document h3 {
         scroll-margin-top: 6rem;
@@ -661,7 +664,8 @@ main {
         overflow: hidden;
     }
 
-    html[data-plan-view="slides"] .five-w-one-h {
+    html[data-plan-view="slides"] .five-w-one-h,
+    html[data-plan-view="slides"] main[data-slides-only] {
         display: grid;
         grid-template-rows: auto minmax(0, 1fr);
         width: calc(100% - 48px);
