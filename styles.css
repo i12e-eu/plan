@@ -40,12 +40,12 @@ main {
     border-top: 1px solid var(--color-border);
 }
 
-.plans h2, .plan-summary > h2 {
+.plans h2, .plan-summary h2 {
     margin: 0;
     color: var(--color-text-primary);
 }
 
-/* Index-only overview columns and a continuous delivery arrow. */
+/* Index-only overview columns and a delivery sequence with separate connectors. */
 .plan-summary {
     margin: 0;
     padding: 2rem 0;
@@ -72,8 +72,12 @@ main {
     min-width: 0;
 }
 
-.plan-summary h3, .plan-summary h4 {
+.plan-summary h3 {
     margin: 0 0 0.5rem;
+    font: var(--type-ui-title);
+}
+
+.plan-summary .summary-stage h3 {
     font: var(--type-ui-panel);
 }
 
@@ -89,29 +93,32 @@ main {
 }
 
 .plan-summary .summary-flow {
-    position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     margin-top: 1.5rem;
-    padding: 0 0 1.25rem 1.5rem;
 }
 
-/* The line and arrowhead are decorative; section order carries the sequence. */
-.plan-summary .summary-flow::before {
+/* On narrow screens, connect the stacked stages beneath their content. */
+.plan-summary .summary-stage:not(:last-child) {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.plan-summary .summary-stage:not(:last-child)::before {
     position: absolute;
-    inset-inline-start: 0;
-    top: 0;
+    inset-inline-start: 3px;
     bottom: 0;
     width: 2px;
+    height: 2rem;
     background: var(--color-link);
     pointer-events: none;
     content: "";
 }
 
-.plan-summary .summary-flow::after {
+.plan-summary .summary-stage:not(:last-child)::after {
     position: absolute;
-    inset-inline-start: -3px;
+    inset-inline-start: 0;
     bottom: 0;
     width: 8px;
     height: 8px;
@@ -122,9 +129,33 @@ main {
     content: "";
 }
 
-.plan-summary .summary-note {
-    margin-top: 1rem;
+.plan-summary .summary-date-row {
+    margin-bottom: 1rem;
+}
+
+.plan-summary .summary-date {
     font: var(--type-ui-meta);
+}
+
+.plan-summary .summary-connector {
+    display: none;
+}
+
+.plan-summary .summary-stage ul {
+    max-width: none;
+    margin: 0;
+    padding-inline-start: 1.25rem;
+    list-style: disc;
+    color: var(--color-text-secondary);
+    font: var(--type-ui-control);
+}
+
+.plan-summary .summary-stage li {
+    margin: 0;
+}
+
+.plan-summary .summary-stage li + li {
+    margin-top: 0.5rem;
 }
 
 @media (min-width: 960px) {
@@ -136,22 +167,59 @@ main {
     .plan-summary .summary-flow {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 2rem;
-        padding: 1.25rem 0 0;
     }
 
-    .plan-summary .summary-flow::before {
-        inset-inline-end: 0;
-        bottom: auto;
-        width: auto;
+    .plan-summary .summary-stage:not(:last-child) {
+        padding-bottom: 0;
+    }
+
+    .plan-summary .summary-stage:not(:last-child)::before,
+    .plan-summary .summary-stage:not(:last-child)::after {
+        content: none;
+    }
+
+    .plan-summary .summary-date-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-height: 2.8rem;
+    }
+
+    .plan-summary .summary-date {
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: calc(100% - 3rem);
+    }
+
+    /* Normal-flow connectors leave clearance around every date label. */
+    .plan-summary .summary-connector {
+        position: relative;
+        display: block;
+        flex: 1 0 2rem;
+        min-width: 2rem;
+        height: 8px;
+        pointer-events: none;
+    }
+
+    .plan-summary .summary-connector::before {
+        position: absolute;
+        inset-inline: 0 2px;
+        top: 3px;
         height: 2px;
+        background: var(--color-link);
+        content: "";
     }
 
-    .plan-summary .summary-flow::after {
-        inset-inline-start: auto;
-        inset-inline-end: 0;
-        top: -3px;
-        bottom: auto;
+    .plan-summary .summary-connector::after {
+        position: absolute;
+        inset-inline-end: 2px;
+        top: 0;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--color-link);
+        border-bottom: 2px solid var(--color-link);
         transform: rotate(-45deg);
+        content: "";
     }
 }
 
