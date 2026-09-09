@@ -40,9 +40,119 @@ main {
     border-top: 1px solid var(--color-border);
 }
 
-.plans h2 {
+.plans h2, .plan-summary > h2 {
     margin: 0;
     color: var(--color-text-primary);
+}
+
+/* Index-only overview columns and a continuous delivery arrow. */
+.plan-summary {
+    margin: 0;
+    padding: 2rem 0;
+    border-block: 1px solid var(--color-border);
+}
+
+.plan-summary + .plans > .plan-entry:first-child {
+    border-top: 0;
+}
+
+.plan-summary .summary-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.plan-summary > .summary-section {
+    margin-top: 2rem;
+}
+
+.plan-summary .summary-section,
+.plan-summary .summary-stage {
+    min-width: 0;
+}
+
+.plan-summary h3, .plan-summary h4 {
+    margin: 0 0 0.5rem;
+    font: var(--type-ui-panel);
+}
+
+.plan-summary p {
+    max-width: none;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font: var(--type-ui-control);
+}
+
+.plan-summary p + p {
+    margin-top: 0.75rem;
+}
+
+.plan-summary .summary-flow {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 0 0 1.25rem 1.5rem;
+}
+
+/* The line and arrowhead are decorative; section order carries the sequence. */
+.plan-summary .summary-flow::before {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-link);
+    pointer-events: none;
+    content: "";
+}
+
+.plan-summary .summary-flow::after {
+    position: absolute;
+    inset-inline-start: -3px;
+    bottom: 0;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--color-link);
+    border-bottom: 2px solid var(--color-link);
+    transform: rotate(45deg);
+    pointer-events: none;
+    content: "";
+}
+
+.plan-summary .summary-note {
+    margin-top: 1rem;
+    font: var(--type-ui-meta);
+}
+
+@media (min-width: 960px) {
+    .plan-summary .summary-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .plan-summary .summary-flow {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+        padding: 1.25rem 0 0;
+    }
+
+    .plan-summary .summary-flow::before {
+        inset-inline-end: 0;
+        bottom: auto;
+        width: auto;
+        height: 2px;
+    }
+
+    .plan-summary .summary-flow::after {
+        inset-inline-start: auto;
+        inset-inline-end: 0;
+        top: -3px;
+        bottom: auto;
+        transform: rotate(-45deg);
+    }
 }
 
 .plan-description {
